@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Lotes.kml</name>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>2.4</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>2.4</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Folder>
+		<name>Lotes</name>
+		<open>1</open>
+		<Placemark>
+			<name>SantaAna_n1</name>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Polygon>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-58.51785442653143,-37.67688785686932,0 -58.51768606522845,-37.67643182060241,0 -58.51739769121186,-37.67625865603994,0 -58.51687796205188,-37.67611135148374,0 -58.51636320710631,-37.67601386758485,0 -58.51589249399352,-37.67597007155752,0 -58.51540411251678,-37.67605787635881,0 -58.51489763110577,-37.67623073824802,0 -58.51469772581849,-37.67628208854484,0 -58.51451372171398,-37.67622950443727,0 -58.51446625179997,-37.67613334348592,0 -58.51447103601414,-37.67585808830137,0 -58.51525794273624,-37.67115654987787,0 -58.51530569413106,-37.67108095072229,0 -58.51550620461841,-37.67095990130766,0 -58.51560751443643,-37.67082288837135,0 -58.5156854255281,-37.67072974586428,0 -58.51585318966115,-37.67057924378094,0 -58.52379349024837,-37.6703325523803,0 -58.5262957136821,-37.67023779453569,0 -58.52753610580636,-37.67019178611244,0 -58.52801757306702,-37.67015848727875,0 -58.53090290350121,-37.67004540825369,0 -58.53335940296146,-37.66995065866556,0 -58.51917927941373,-37.68026336179828,0 -58.51785442653143,-37.67688785686932,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>SantaAna_n2</name>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Polygon>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-58.49772529172302,-37.67033871370164,0 -58.49393709378258,-37.67045277217592,0 -58.4889448284412,-37.66609363294873,0 -58.49532895190517,-37.66155661838003,0 -58.49554913159616,-37.66152787239496,0 -58.49573479550682,-37.66147218834534,0 -58.49584908084235,-37.66126743190037,0 -58.49767846672349,-37.66082942151737,0 -58.49854198482196,-37.66020788819704,0 -58.50438036142833,-37.66536140643214,0 -58.50438137351883,-37.66557400491327,0 -58.49772529172302,-37.67033871370164,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>SantaAna_n3</name>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Polygon>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-58.42329215391602,-37.69048991906419,0 -58.41939237486442,-37.6932961935635,0 -58.41310354230308,-37.68784215470723,0 -58.40786737389983,-37.68338834488318,0 -58.41202856430296,-37.68044796549944,0 -58.42329215391602,-37.69048991906419,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>
