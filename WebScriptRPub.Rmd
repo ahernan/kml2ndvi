@@ -1,28 +1,28 @@
+---
+title: "Índice de Vegetación de Diferencia Normalizada"
+author: "Angelini Hernan, Oricchio Patricio, ..."
+date: "5 de noviembre de 2016"
+output: html_document
+---
 
-#------------------- METADATA -------------------
-# Descripcion del Script: Retorna un recorte y un reporte de un raster 
-#                         a partir de un poligono vectorial
-# Raster: Se considera del producto MOD13Q1 de MODIS la banda NDVI y EVI. 
-#         En este caso recortes proporcionados por Patricio Oricchio en formato .img
-#         Valores en raster almacenado como entero. Si quiero valor real entonces (value=value/1000)
-# Vector: Inicialmente se considera un archivo KML con un poligono dentro
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 
-# Sistema de referencia de cordenadas (CRS) de Raster y Vector = WGS84 !!!
-
-# Fecha de ultima modificacion: 4-nov-2016
-
-# Participantes
-# angelini.hernan@inta.gob.ar
-# oricchio.patricio@inta.gob.ar
-# bienvenidos otros interesados
-#------------------- /METADATA -------------------
-
-#---- Librerias ----
+#---- Librerias necesarias ----
 library(rgdal)
 library(rgeos)
 library(sp)
 
+```
 
+- Texto de ejemplo. http://sepa.inta.gob.ar/productos/indices_de_vegetacion/compuesto_16d/
+
+El índice de vegetación normalizado (IVN; NDVI en inglés) que se calcula tomando los valores máximos para una composición de imágenes correspondientes a 16 días. Se contabilizan los 16 días a partir del 1º de enero de cada año, obteniéndose un total de 23 imágenes anuales. 
+
+
+
+Fechas consideradas para el siguiente informe
+```{r RasterStack, echo=FALSE}
 #---- Construccion de la Pila de RASTER ----
 # Almacenadas dentro del directorio NDVI. 23 img por anio.
 # de 001-2015 a 353-2015. con xxx-2015@1=NDVI y xxx-2015@2=EVI
@@ -35,10 +35,13 @@ setwd("/home/hernan/Curso_R/git/kml2ndvi/NDVI")
 
 # Se crea en memoria el RasterStack o pila de bandas 
 # (2 bandas por archivo, solo se trae la 1ra=NDVI)
-(RasterStack <- raster::stack(lista_img, bands=1))
+RasterStack <- raster::stack(lista_img, bands=1)
 #---- /Construccion de la Pila de RASTER ----
+```
 
+Poligonos dentro del registro KML
 
+```{r Vectores, echo=FALSE}
 #---- Construccion del poligono - VECTOR ----
 # Almacenado dentro de la carpeta data, un KML con poligonos dentro
 # Se selecciona uno y se procesa
@@ -54,17 +57,26 @@ ogrListLayers(dsnv) # Funcion para leer objetos espaciales. Para ver que hay den
 lotes_layer <- rgdal::readOGR(dsnv, layer = "Lotes")
 
 # Puedo graficar los poligonos con la siguiente instruccion
-# raster::plot(lotes_layer)
+raster::plot(lotes_layer)
 
 
 # Creo un objeto espacial con uno de los poligonos de la capa
 prj_string_WGS <- CRS("+proj=longlat +datum=WGS84")
 lotev <- SpatialPolygons(lotes_layer@polygons[1])
-# raster::plot(lotev)
+```
+
+Poligono a procesar
+
+```{r Vector, echo=FALSE}
+raster::plot(lotev)
 #---- /Construccion del poligono - VECTOR ----
+```
 
 
+Procesando........
 
+
+```{r Recorte, echo=FALSE}
 #---- Construccion del REPORTE - VECTOR y RASTER ----
 # Se corta RasterStack con Lote
 # Se procesa media de valores y desvio estandar para cada pixel del lote
@@ -87,8 +99,12 @@ loter_sd <- raster::calc(lote_raster, fun=sd)
 # raster::values(loter_media)
 # raster::values(loter_sd)
 #---- /Construccion del REPORTE - VECTOR y RASTER ----
+```
 
 
+Resultados
+
+```{r Resultado, echo=FALSE}
 #---- Construccion de la salida grafica - VECTOR y RASTER ----
 # Configura espacios de salida
 opar <- par(mfrow=c(1,2))
@@ -102,4 +118,22 @@ raster::plot(loter_sd, main = "SD", col=c("blue", "yellow", "orange", "red"))
 plot(lotev, add=T, border="green", lwd=3)
 
 par(opar)
-#---- /Construccion de la salida grafica - VECTOR y RASTER ----
+```
+
+## Script
+Disponible en https://github.com/ahernan/kml2ndvi/blob/master/kml2ndvi.R
+
+
+
+## Aportes del script
+- Navega entre directorios de archivos
+- Lee raster .img. Selecciona bandas y apila en memoria
+- Lee vector kml. Seleciona capa y filtra uno de la lista
+- Procesa raster's a partir de un vector, corta, enmascara y calcula sobre cada pixel
+
+
+
+
+________________________________________________________
+R Markdown see <http://rmarkdown.rstudio.com>.
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. 
